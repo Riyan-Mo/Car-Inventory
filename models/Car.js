@@ -16,6 +16,11 @@ const car = new Schema({
         type: Schema.Types.ObjectId,
         required: true,
     },
+    stock:{
+        type: Number,
+        min: 0,
+        required: true,
+    },
     maxSpeed: {
         type: Number,
         required: true,
