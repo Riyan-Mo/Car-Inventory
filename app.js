@@ -1,3 +1,4 @@
+require("dotenv/config")
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,6 +7,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const { default: mongoose } = require('mongoose');
 
 var app = express();
 
@@ -37,5 +39,18 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+async function connect(){
+  const url = process.env.MONGODB_URI;
+  try{
+    await mongoose.connect(url);
+    console.log("Connected to MongoDB");
+  }
+  catch(error){
+    console.log("Error connecting to MongoDB ", error);
+  }
+}
+
+connect();
 
 module.exports = app;
