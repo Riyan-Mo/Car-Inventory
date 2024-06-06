@@ -20,19 +20,21 @@ const car = new Schema({
         type: Number,
         min: 0,
         required: true,
+        default: 1,
     },
     maxSpeed: {
         type: Number,
-        required: true,
-        default: "unknown",
     },
-    acceleration: {
+    horsepower: {
         type: Number,
     },
     year:{
         type: Number,
         max: new Date().getUTCFullYear(),
     },
+    imgUrl:{
+        type: String,
+    }
 })
 
 module.exports = mongoose.model("Car", car);

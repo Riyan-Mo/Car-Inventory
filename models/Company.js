@@ -22,10 +22,6 @@ const company = new Schema({
         type: String,
         required: true,
         default: "A company that produces world class cars",
-    },
-    imgUrl: {
-        type: String,
-        required: true,
     }
 })
 
