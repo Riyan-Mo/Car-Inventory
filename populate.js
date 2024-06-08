@@ -150,6 +150,7 @@ async function main() {
   console.log("Connected to MONGODB");
   await deleteAll();
   await populate();
+  await mongoose.connection.close();
 }
 
 async function populate() {
