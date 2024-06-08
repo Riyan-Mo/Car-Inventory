@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const type = new Schema({
+const typeSchema = new Schema({
     name:{
         type:String,
         required: true,
@@ -18,4 +18,8 @@ const type = new Schema({
     }
 })
 
-module.exports = mongoose.model("CarType", type);
+typeSchema.virtual("url").get(function(){
+    return `/types/${this._id}`;
+})
+
+module.exports = mongoose.model("CarType", typeSchema);

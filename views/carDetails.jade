@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    div(style="display: grid; place-items: center; gap: 2em; margin-bottom: 10em;")
+      img(src=car.imgUrl class="img-fluid rounded" alt=car.model width="30%")
+      h2(class="h2")= `${car.company.name} ${car.model}`
+      h4= `Stock: ${car.stock}`
+      h5= `Type: ${car.type.name}`
+      h5= `Max Speed: ${car.maxSpeed}`
+      h5= `Horsepower: ${car.horsepower}`
+      h5= `Year Introduced: ${car.year}`
+      a(class="btn btn-success" href=car.url+"/update")= "Update car"
+      a(class="btn btn-danger" href=car.url+"/delete")= "Delete car"
+      a(class="btn btn-primary" href="/cars")= "Back"

@@ -25,4 +25,8 @@ const company = new Schema({
     }
 })
 
+company.virtual('url').get(function(){
+    return `company/${this._id}`;
+})
+
 module.exports = mongoose.model("Company", company);

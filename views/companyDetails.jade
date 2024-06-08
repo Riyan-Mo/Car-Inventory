@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    div(style="display: grid; place-items: center; gap: 2em; margin-bottom: 10em;")
+      h2(class="h2")= `${company.name}`
+      p(class="text-center" style="padding: 1em 5em;")
+       i= company.description
+      h4= `Estd: ${company.established}`
+      h4= `Country: ${company.country}`
+      a(class="btn btn-success" href=company.url+"/update")= "Update Company"
+      a(class="btn btn-danger" href=company.url+"/delete")= "Delete Company"
+      a(class="btn btn-primary" href="/company")= "Back"

@@ -10,11 +10,11 @@ const car = new Schema({
     },
     company: {
         type: Schema.Types.ObjectId,
-        required: true,
+        ref: "Company",
     },
     type: {
         type: Schema.Types.ObjectId,
-        required: true,
+        ref: "CarType",
     },
     stock:{
         type: Number,
@@ -35,6 +35,10 @@ const car = new Schema({
     imgUrl:{
         type: String,
     }
+})
+
+car.virtual("url").get(function(){
+    return `/cars/${this._id}`;
 })
 
 module.exports = mongoose.model("Car", car);

@@ -6,7 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const carsRouter = require('./routes/cars');
+const companyRouter = require('./routes/company');
+const carTypeRouter = require('./routes/cartypes');
 const { default: mongoose } = require('mongoose');
 
 var app = express();
@@ -22,7 +24,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/cars', carsRouter);
+app.use('/company', companyRouter);
+app.use('/cartype', carTypeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -42,6 +46,7 @@ app.use(function(err, req, res, next) {
 
 async function connect(){
   const url = process.env.MONGODB_URI;
+  mongoose.set("strictPopulate", false);
   try{
     await mongoose.connect(url);
     console.log("Connected to MongoDB");

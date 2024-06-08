@@ -1,5 +1,37 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(style="margin: 3em")
+    h3(class="text-center text-success") Welcome to Car Inventory
+    h5(class="text-center text-success-emphasis")="We deal with exotic cars."
+  div(style="display: grid; grid-auto-flow: row; gap: 1em; margin-bottom: 3em;") 
+    h4(class="text-center")= "Cars we offer:"
+    div(style="display: flex; justify-content: space-around;") 
+      each car in cars
+        div(class="card" style="width: 18rem")
+          img(src=car.imgUrl class="card-img-top" alt=car.model)
+          div(class="card-body")
+            h5(class="card-title")=`${car.company.name} ${car.model}`
+            p(class="card-text")=`Stock: ${car.stock}`
+    a(href='/cars' class="btn btn-primary text-center" style="justify-self:center")="Check out"
+    
+  div(style="display: grid; grid-auto-flow: row; gap: 1em; margin-bottom: 3em;") 
+    h4(class="text-center")= "Companies we deal with:"
+    div(style="display: flex; justify-content: space-around;") 
+      each company in companies
+        div(class="card" style="width: 18rem")
+          div(class="card-body")
+            h5(class="card-title text-center")=`${company.name}`
+            p(class="card-text text-center")=`Country: ${company.country}`
+    a(href='/company' class="btn btn-primary text-center" style="justify-self:center")="Check out"
+
+   div(style="display: grid; grid-auto-flow: row; gap: 1em; margin-bottom: 3em;") 
+    h4(class="text-center")= "Types of cars we offer:"
+    div(style="display: flex; justify-content: space-around;") 
+      each type in types
+        div(class="card" style="width: 18rem")
+          img(src=type.photoUrl class="card-img-top" alt=type.name)
+          div(class="card-body")
+            h5(class="card-title")=`${type.name}`
+    a(href='/cartype' class="btn btn-primary text-center" style="justify-self:center")="Check out"
+
