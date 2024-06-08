@@ -57,7 +57,7 @@ const cars = [
     company: "Tesla", // Tesla
     type: "Sedan",
     stock: 0,
-    maxspeed: 336,
+    maxSpeed: 336,
     horsepower: 1100,
     year: 2012,
     imgUrl:
@@ -68,7 +68,7 @@ const cars = [
     company: "Ford", // Ford
     type: "Sports Car",
     stock: 3,
-    maxspeed: 249,
+    maxSpeed: 249,
     horsepower: 480,
     year: 1964,
     imgUrl:
@@ -79,7 +79,7 @@ const cars = [
     company: "Toyota", // Toyota
     type: "Sedan",
     stock: 10,
-    maxspeed: 226,
+    maxSpeed: 226,
     horsepower: 203,
     year: 1982,
     imgUrl:
@@ -90,7 +90,7 @@ const cars = [
     company: "Tesla", // Tesla
     type: "SUV",
     stock: 7,
-    maxspeed: 249,
+    maxSpeed: 249,
     horsepower: 1020,
     year: 2015,
     imgUrl:
