@@ -2,11 +2,12 @@ extends layout
 
 block content
     div(style="display: grid; place-items: center; gap: 2em; margin-bottom: 10em;")
-      h2(class="h2")= `${company.name}`
+      img(src=type.photoUrl class="img-fluid rounded" alt=type.name width="30%")
+      h2(class="h2")= `${type.name}`
       p(class="text-center" style="padding: 1em 5em;")
-       i= company.description
-      h4= `Estd: ${company.established}`
-      h4= `Country: ${company.country}`
+       i= type.description
+
+      h4(class="text-center")= `${type.name}s we have:`
       div(style="display: flex; justify-content: space-around;") 
       each car in cars
         div(class="card" style="width: 18rem")
@@ -14,8 +15,9 @@ block content
           div(class="card-body")
             h5(class="card-title")=`${car.company.name} ${car.model}`
             p(class="card-text")=`Stock: ${car.stock}`
-            a(href=car.url class="btn btn-primary")="Details" 
-      
-      a(class="btn btn-success" href=company.url+"/update")= "Update Company"
-      a(class="btn btn-danger" href=company.url+"/delete")= "Delete Company"
-      a(class="btn btn-primary" href="/company")= "Back"
+            a(href=car.url class="btn btn-primary")="Details"  
+
+      a(class="btn btn-success" href=type.url+"/update")= "Update Car Type"
+      a(class="btn btn-danger" href=type.url+"/delete")= "Delete Car Type"
+      a(class="btn btn-primary" href="/types")= "Back"
+    

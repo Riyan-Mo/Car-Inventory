@@ -1,13 +1,18 @@
 extends layout 
 
 block content
-    h2(class="text-center" style="margin-bottom: 1em")= "We only deal with the best companies."
-    div(class="" style="display: grid; grid-template-columns: 1fr 1fr; place-items:center; gap: 3em;") 
-        each company in companies 
-            div(class="card" style="width: 18rem")
-                div(class="card-body")
-                    h4(class="card-title")=`${company.name}`
-                    p(class="card-text")=`Est: ${company.established}`
-                    a(href=company.url class="btn btn-primary")="Details"
-    div(style="display: flex; justify-content: center; margin: 2em") 
+    if companies.length == 0
+        h2(class="text-center" style="margin-bottom: 1em")= "No car companies available"
+    else
+        h2(class="text-center" style="margin-bottom: 1em")= "We only deal with the best companies."
+        div(class="" style="display: grid; grid-template-columns: 1fr 1fr; place-items:center; gap: 3em;") 
+            each company in companies 
+                div(class="card" style="width: 18rem")
+                    div(class="card-body")
+                        h4(class="card-title")=`${company.name}`
+                        p(class="card-text")=`Est: ${company.established}`
+                        a(href=company.url class="btn btn-primary")="Details"
+    
+    div(style="display: flex; align-items: center; gap: 1em; margin: 2em; flex-direction: column;") 
+        a(class="btn btn-secondary btn-center" href="/company/create")= "Create New Company"
         a(class="btn btn-primary btn-center" href="/")= "Back"

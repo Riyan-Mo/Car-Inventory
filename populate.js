@@ -22,7 +22,7 @@ const carTypes = [
   {
     name: "SUV",
     description: `A sport utility vehicle (SUV) is a car classification that combines elements of road-going passenger cars with features from off-road vehicles, such as raised ground clearance and four-wheel drive.`,
-    photoUrl: `https://www.carbuyer.co.uk/2019-mercedes-glc-suv-arrives-with-improved-safety-and-tech-pictures`,
+    photoUrl: `https://media.gq.com/photos/5b64c090a3a1320b7280ed23/16:9/w_1920,c_limit/Lamborghini-Urus-2.jpg`,
   },
   {
     name: "Sports Car",

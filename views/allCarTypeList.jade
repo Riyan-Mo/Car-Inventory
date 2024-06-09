@@ -1,13 +1,19 @@
 extends layout 
 
 block content
-    h2(class="text-center" style="margin-bottom: 1em")= "Our carefully curated list of cars"
-    div(class="" style="display: grid; grid-template-columns: 1fr 1fr; place-items:center; gap: 3em;") 
-        each type in carTypes 
-            div(class="card" style="width: 18rem")
-                img(src=type.photoUrl class="card-img-top" alt=type.name)
-                div(class="card-body")
-                    h5(class="card-title")=`${type.name}`
-                    a(href=type.url class="btn btn-primary")="Details"
-    div(style="display: flex; justify-content: center; margin: 2em") 
+    if carTypes.length == 0
+        h2(class="text-center" style="margin-bottom: 1em")= "No car types available"
+    else 
+        h2(class="text-center" style="margin-bottom: 1em")= "Handpicked selection of car types."
+        div(class="" style="display: grid; grid-template-columns: 1fr 1fr; place-items:center; gap: 3em;") 
+            each type in carTypes 
+                div(class="card" style="width: 18rem")
+                    img(src=type.photoUrl class="card-img-top" alt=type.name)
+                    div(class="card-body")
+                        h5(class="card-title")=`${type.name}`
+                        a(href=type.url class="btn btn-primary")="Details"
+    
+    div(style="display: flex; align-items: center; gap: 1em; margin: 2em; flex-direction: column;") 
+        a(class="btn btn-secondary btn-center" href="/types/create")= "Create New Type"
         a(class="btn btn-primary btn-center" href="/")= "Back"
+    
