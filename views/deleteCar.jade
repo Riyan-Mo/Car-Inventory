@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    div(style="display: grid; place-items: center; margin-bottom: 10em;")
+      img(src=car.imgUrl class="img-fluid rounded" alt=car.model width="30%")
+      h2(class="h2")= `Are you sure you want to delete ${car.company.name} ${car.model}?`
+      p= `Stock: ${car.stock}`
+      p
+        a(href=car.company.url)= `Company: ${car.company.name}`
+      p
+        a(href=car.type.url)= `Type: ${car.type.name}`
+      p= `Max Speed: ${car.maxSpeed}`
+      p= `Horsepower: ${car.horsepower}`
+      p= `Year Introduced: ${car.year}`
+      form(action=car.url+"/delete" method="post" style="display: flex; flex-direction: column; gap: 1em; align-items:center;")  
+        input(type="text" name="password" placeholder="Password")
+        button(class="btn btn-danger mb-4")= "Delete"
+      a(class="btn btn-primary mb-4" href=`${car.url}`)= "Back"

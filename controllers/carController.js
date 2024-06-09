@@ -1,3 +1,4 @@
+require("dotenv/config")
 const asyncHandler = require("express-async-handler");
 const Car = require("../models/Car")
 const Company = require("../models/Company")
@@ -17,4 +18,21 @@ exports.id = asyncHandler(async(req, res, next)=>{
     else{
         res.render("error", {title: "Couldn't find car"})
     }
+})
+
+exports.getDelete = asyncHandler(async(req, res, next)=>{
+    const id = req.params.id;
+    const car = await Car.findById(id).populate("company").populate("type").exec();
+    res.render("deleteCar", {car});
+})
+
+exports.deleteCar = asyncHandler(async(req, res, next)=>{
+    const id = req.params.id;
+    const password = req.body.password;
+    if(password===process.env.PASSWORD){
+        await Car.findByIdAndDelete(id);
+        res.redirect("/");    
+        return;
+    }
+    res.redirect(`/cars/${id}/delete`);
 })
