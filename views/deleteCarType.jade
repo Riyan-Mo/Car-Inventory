@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    div(style="display: grid; place-items: center; gap: 2em;")
+        if cars.length == 0
+            h2(class="h2")= `Are you sure you want to delete ${type.name}?`
+            form(action=type.url+"/delete" method="post" style="display: flex; flex-direction: column; gap: 1em; align-items:center;")  
+                input(type="text" name="password" placeholder="Password")
+                button(class="btn btn-danger")= "Delete"
+        else 
+            h2(class="h2")= `Delete the following cars before deleting ${type.name}`
+            each car in cars 
+                h4
+                    a(href=car.url)= car.model 
+        a(class="btn btn-primary mb-4" href=`${type.url}`)= "Back"

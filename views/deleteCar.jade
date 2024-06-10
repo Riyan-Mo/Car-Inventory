@@ -9,9 +9,6 @@ block content
         a(href=car.company.url)= `Company: ${car.company.name}`
       p
         a(href=car.type.url)= `Type: ${car.type.name}`
-      p= `Max Speed: ${car.maxSpeed}`
-      p= `Horsepower: ${car.horsepower}`
-      p= `Year Introduced: ${car.year}`
       form(action=car.url+"/delete" method="post" style="display: flex; flex-direction: column; gap: 1em; align-items:center;")  
         input(type="text" name="password" placeholder="Password")
         button(class="btn btn-danger mb-4")= "Delete"

@@ -1,4 +1,3 @@
-require("dotenv/config")
 const asyncHandler = require("express-async-handler");
 const Car = require("../models/Car")
 const Company = require("../models/Company")
@@ -35,4 +34,20 @@ exports.deleteCar = asyncHandler(async(req, res, next)=>{
         return;
     }
     res.redirect(`/cars/${id}/delete`);
+})
+
+exports.getCreate = asyncHandler(async(req, res, next)=>{
+    res.render("carForm");
+})
+
+exports.getUpdate = asyncHandler(async(req, res, next)=>{
+    const id = req.params.id;
+    const car = await Car.findById(id).populate("company").populate("type").exec();
+    const companies = await Company.find({}).exec();
+    const types = await CarType.find({}).exec();
+    res.render("carForm", {car, companies, types})
+})
+
+exports.updateCar = asyncHandler(async(req, res, next)=>{
+    
 })
