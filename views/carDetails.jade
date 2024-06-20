@@ -9,9 +9,9 @@ block content
         a(href=car.company.url)= `Company: ${car.company.name}`
       h5
         a(href=car.type.url)= `Type: ${car.type.name}`
-      h5= `Max Speed: ${car.maxSpeed}`
-      h5= `Horsepower: ${car.horsepower}`
-      h5= `Year Introduced: ${car.year}`
+      h5= `Max Speed: ${car.maxSpeed || "Not available"}`
+      h5= `Horsepower: ${car.horsepower || "Not available"}`
+      h5= `Year Introduced: ${car.year || "Not available"}`
       a(class="btn btn-success" href=car.url+"/update")= "Update car"
       a(class="btn btn-danger" href=car.url+"/delete")= "Delete car"
       a(class="btn btn-primary" href="/cars")= "Back"
