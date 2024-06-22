@@ -9,12 +9,12 @@ router.get("/:id", carsController.id);
 
 router.get("/:id/delete", carsController.getDelete);
 
+router.post("/create", carsController.postCreate);
+
 router.post("/:id/delete", carsController.deleteCar)
 
-// router.post("/create", carsController.postCreate);
+router.get("/:id/update", carsController.getUpdate);
 
-// router.get("/:id/update", carsController.getUpdate);
-
-// router.post("/:id/update", carsController.postUpdate);
+router.post("/:id/update", carsController.postUpdate);
 
 module.exports = router;
