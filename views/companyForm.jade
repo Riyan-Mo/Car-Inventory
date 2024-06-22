@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    div(style="display: grid; place-items: center; margin-bottom: 10em;")
+      form(method="post" style="display: flex; flex-direction: column; gap: 1em; align-items:center;")  
+
+        input(type="text" name="name" minLength="3" placeholder="Company Name" required value=(company&&company.name?company.name: ""))
+        input(type="number" name="established" placeholder="Year Established" required value=(company&&company.established?company.established: "") )
+        
+        label(for="country")= "Choose the country from the list:"
+        input(type="text" list="countries" name="country" value=company.country)
+        datalist(id="countries")
+            each country in countries 
+                option(value=country.name.common)= country.name.common
+
+        textarea(name="description" minLength="10" placeholder="Company Description" required)= (company&&company.description?company.description: "")
+
+        if errors
+          ul 
+            each error in errors 
+              li(style="color: red")= error
+        button(class="btn btn-success mb-4")= `${company&&company._id?"Update":"Create"}`
+      a(class="btn btn-primary mb-4" href=`${company&&company.url||"/company"}`)= "Back"

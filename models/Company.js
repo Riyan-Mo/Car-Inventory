@@ -15,7 +15,6 @@ const company = new Schema({
     },
     country:{
         type: String,
-        minLength: 3,
         required: true,
     },
     description: {
