@@ -11,7 +11,7 @@ const company = new Schema({
     established: {
         type: Number,
         required: true,
-        max: new Date(),
+        max: new Date().getFullYear(),
     },
     country:{
         type: String,
