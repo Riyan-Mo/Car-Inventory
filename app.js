@@ -10,8 +10,18 @@ const carsRouter = require('./routes/cars');
 const companyRouter = require('./routes/company');
 const carTypeRouter = require('./routes/cartypes');
 const { default: mongoose } = require('mongoose');
+const { rateLimit } = require("express-rate-limit");
 
 var app = express();
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+	limit: 100,
+	standardHeaders: 'draft-7',
+	legacyHeaders: false, 
+})
+
+app.use(limiter);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
