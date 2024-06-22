@@ -5,7 +5,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const compression = require("compression");
 
 var indexRouter = require('./routes/index');
 const carsRouter = require('./routes/cars');
@@ -13,7 +12,6 @@ const companyRouter = require('./routes/company');
 const carTypeRouter = require('./routes/cartypes');
 const { default: mongoose } = require('mongoose');
 const { rateLimit } = require("express-rate-limit");
-const helmet = require("helmet")
 
 var app = express();
 const limiter = rateLimit({
@@ -22,16 +20,6 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
-
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      "script-src": ["'self'", "code.jquery.com",
-        "cdn.jsdelivr.net"
-      ],
-    }
-  })
-)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,7 +30,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(compression())
 
 app.use('/', indexRouter);
 app.use('/cars', carsRouter);
