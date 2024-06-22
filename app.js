@@ -1,9 +1,11 @@
 require("dotenv/config")
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const compression = require("compression");
 
 var indexRouter = require('./routes/index');
 const carsRouter = require('./routes/cars');
@@ -40,6 +42,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(compression())
 
 app.use('/', indexRouter);
 app.use('/cars', carsRouter);
