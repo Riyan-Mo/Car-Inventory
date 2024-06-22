@@ -18,7 +18,7 @@ block content
                   option(value=type._id selected)= type.name  
                 else 
                   option(value=type._id )= type.name  
-        input(type="number" name="stock" placeholder="Inventory" required value=(car&&car.stock?car.stock: "") )
+        input(type="number" name="stock" placeholder="Inventory" required min="0" value=(car&&car.stock?car.stock: "") )
         input(type="number" name="maxSpeed" placeholder="Max Speed" value=(car&&car.maxSpeed?car.maxSpeed: "") )
         input(type="number" name="horsepower" min="500" placeholder="Horsepower" value=(car&&car.horsepower?car.horsepower: ""))
         input(type="number" name="year" min="1890" max=`${new Date().getUTCFullYear()}` placeholder="Year" value=(car&&car.year?car.year: ""))

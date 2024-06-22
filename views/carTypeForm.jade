@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    div(style="display: grid; place-items: center; margin-bottom: 10em;")
+      form(method="post" style="display: flex; flex-direction: column; gap: 1em; align-items:center;")  
+        input(type="text" name="name" placeholder="Type" minLength="3" required value=(type&&type.name?type.name: "") )
+        input(type="text" name="photoUrl" placeholder="Photo Url" value=(type&&type.photoUrl?type.photoUrl: "") )
+        textarea(name="description" minLength="10" placeholder="Type Description" required)= (type&&type.description?type.description: "")
+        if errors
+          ul 
+            each error in errors 
+              li(style="color: red")= error
+        button(class="btn btn-success mb-4")= `${type&&type._id?"Update":"Create"}`
+      a(class="btn btn-primary mb-4" href=`${type&&type.url||"/types"}`)= "Back"
