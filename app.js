@@ -11,17 +11,25 @@ const companyRouter = require('./routes/company');
 const carTypeRouter = require('./routes/cartypes');
 const { default: mongoose } = require('mongoose');
 const { rateLimit } = require("express-rate-limit");
+const helmet = require("helmet")
 
 var app = express();
-
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-	limit: 100,
-	standardHeaders: 'draft-7',
-	legacyHeaders: false, 
-})
+  windowMs: 1 * 60 * 1000,
+  max: 20,
+});
 
 app.use(limiter);
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "script-src": ["'self'", "code.jquery.com",
+        "cdn.jsdelivr.net"
+      ],
+    }
+  })
+)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
